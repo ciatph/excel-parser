@@ -18,11 +18,11 @@ Testing downloading and parsing excel files.
 
 ### `npm start`
 
-Download and parse a remote excel file (listed in `/src/main.js`) using a custom callback in `/src/utils/parse_excel.js`. Prints ourput to console.
+Download and parse a remote excel file (listed in `/src/main.js`) using a custom callback in `/src/utils/parse_excel.js`. Prints output to console.
 
 ### `npm run parse`
 
-Parse a local excel file using a custom callback in `/src/utils/parse_excel.js`. Prints ourput to console.
+Parse a local excel file using a custom callback in `/src/utils/parse_excel.js`. Prints output to console.
 
 @ciatph  
 20220601
