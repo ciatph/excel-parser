@@ -1,0 +1,23 @@
+{
+  "name": "excel-parser",
+  "version": "1.0.0",
+  "description": "Testing parsing excel files.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "parse": "node src/parse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciatph/excel-parser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciatph/excel-parser/issues"
+  },
+  "homepage": "https://github.com/ciatph/excel-parser#readme",
+  "dependencies": {
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.8/xlsx-0.18.8.tgz"
+  }
+}
