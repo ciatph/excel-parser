@@ -28,5 +28,9 @@ Parse a local excel file (`/data/day1.xlsx`) using a custom callback in `/src/sc
 
 Download multiple excel files defined in (`/src/batch.js`) and write relevant data to CSV files.
 
+### `npm run batch:local`
+
+Parse and extract relevant data from multiple local Excel files in (`/data/local/*.xlsx`) to CSV files.
+
 @ciatph  
 20220601

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/main.js",
     "parse": "node src/parse.js",
-    "batch:download": "node src/batch.js"
+    "batch:download": "node src/batch.js",
+    "batch:local": "node src/batch_local.js"
   },
   "repository": {
     "type": "git",
