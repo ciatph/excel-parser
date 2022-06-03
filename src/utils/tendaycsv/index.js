@@ -8,7 +8,7 @@ class TenDayCsv {
    *    No need to include this parameter if the target region's provinces
    *    is already defined in the PROVINCES constant 
    */
-  constructor ({ regionName, provinces, municipalities}) {
+  constructor ({ regionName, provinces, municipalities }) {
     if (regionName === undefined) {
       throw new Error('Missing parameter/s.')
     }

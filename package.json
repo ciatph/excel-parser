@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/main.js",
     "parse": "node src/parse.js",
-    "batch": "node src/batch.js"
+    "batch:download": "node src/batch.js"
   },
   "repository": {
     "type": "git",
