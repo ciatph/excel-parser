@@ -20,6 +20,26 @@ const parseExcel = (excelFile = 'test.xlsx') => {
 
   const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[0]])
 
+  const bicolProvinces = ['Albay', 'Camarines Norte', 'Camarines Sur', 'Catanduanes', 'Masbate', 'Sorsogon']
+  const bicol = data.filter(x => (x.__EMPTY !== undefined && bicolProvinces.find(y => x.__EMPTY.toString().includes(y))))
+    .map(x => {
+      const province = bicolProvinces.find(y => x.__EMPTY.toString().includes(y))
+      return {
+        province,
+        municipality: x.__EMPTY.toString().split(`(${province})`)[0].trim(),
+        tmin: x.__EMPTY_1,
+        tmax: x.__EMPTY_2,
+        tmean: x.__EMPTY_3,
+        rainfall: x.__EMPTY_5,
+        cover: x.__EMPTY_6,
+        humidity: x.__EMPTY_7,
+        wspeed: x.__EMPTY_8,
+        wdirection: x.__EMPTY_9
+      }
+    })
+
+  // console.log(bicol)
+
   for (let key in data) {
     const values = Object.values(data[key])
     let municipality = values[0]
@@ -71,6 +91,7 @@ const parseExcel = (excelFile = 'test.xlsx') => {
   }
 
   // console.log(JSON.stringify(stats))
+  // console.log(stats)
   console.log(rainfallProvince)
 }
 
