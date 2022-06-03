@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/main.js",
-    "parse": "node src/parse.js"
+    "parse": "node src/parse.js",
+    "batch": "node src/batch.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/ciatph/excel-parser#readme",
   "dependencies": {
+    "fast-csv": "^4.3.6",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.18.8/xlsx-0.18.8.tgz"
   }
 }
