@@ -32,5 +32,9 @@ Download multiple excel files defined in (`/src/batch.js`) and write relevant da
 
 Parse and extract relevant data from multiple local Excel files in (`/data/local/*.xlsx`) to CSV files.
 
+### `npm run batch:validate`
+
+Download and validate multiple excel files defined in (`/src/batch_validate.js`). Return validated data as `Object[]`.
+
 @ciatph  
 20220601
