@@ -7,7 +7,8 @@
     "start": "node src/main.js",
     "parse": "node src/parse.js",
     "batch:download": "node src/batch.js",
-    "batch:local": "node src/batch_local.js"
+    "batch:local": "node src/batch_local.js",
+    "batch:validate": "node src/batch_validate.js"
   },
   "repository": {
     "type": "git",
