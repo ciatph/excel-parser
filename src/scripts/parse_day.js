@@ -51,28 +51,14 @@ const parseDayForecast = (excelFile, regionName) => {
         throw new Error(`[${excelFile}], row #${index} ${err.message}`)
       }
 
-      let obj
-
       try {
-        obj = {
-          province,
-          municipality: bicolCSV.getMunicipalityName(x.__EMPTY, province),
-          tmin: x.__EMPTY_1,
-          tmax: x.__EMPTY_2,
-          tmean: x.__EMPTY_3,
-          rainfall: x.__EMPTY_5,
-          cover: x.__EMPTY_6,
-          humidity: x.__EMPTY_7,
-          wspeed: x.__EMPTY_8,
-          wdirection: x.__EMPTY_9 ? x.__EMPTY_9 : x['CLIMPS-FF-1'],
-          date_forecast: fDate,
-          date_range: dateRange
-        }
+        const obj = bicolCSV.getData(x, province)
+        obj.date_forecast = fDate
+        obj.date_range = dateRange
+        return obj
       } catch (err) {
-        throw new Error(`[${excelFile}], row #${index}, error parsing object (${municipality}) - ${err.message}`)
+        throw new Error(`[${excelFile}], row #${index}, error extracting row object (${x.__EMPTY}) - ${err.message}`)
       }
-
-      return obj
     })
 
     // console.log(filteredData)

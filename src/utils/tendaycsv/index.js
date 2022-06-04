@@ -157,6 +157,36 @@ class TenDayCsv {
 
     return true
   }
+
+  /**
+   * Extract and format relevant data from a row (Object)
+   * @param {Object} row - Excel row converted to Object
+   * @param {String} provinceName - Name of province
+   * @returns {Object} { province, municipality, tmin, tmax, tmin, rainfall, cover, humidity, wspeed, wdirection }
+   * @throws {Error} Errors that may be encountered while parsing a row
+   */
+  getData (row, provinceName) {
+    let obj
+
+    try {
+      obj = {
+        province: provinceName,
+        municipality: this.getMunicipalityName(row.__EMPTY, provinceName),
+        tmin: row.__EMPTY_1,
+        tmax: row.__EMPTY_2,
+        tmean: row.__EMPTY_3,
+        rainfall: row.__EMPTY_5,
+        cover: row.__EMPTY_6,
+        humidity: row.__EMPTY_7,
+        wspeed: row.__EMPTY_8,
+        wdirection: row.__EMPTY_9 ? row.__EMPTY_9 : row['CLIMPS-FF-1'],
+      }
+
+      return obj
+    } catch (err) {
+      throw new Error(err.message)
+    }
+  }
 }
 
 module.exports = TenDayCsv
