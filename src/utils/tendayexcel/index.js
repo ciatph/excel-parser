@@ -172,6 +172,14 @@ class TenDayExcel {
   getData (row, provinceName) {
     let obj
 
+    // Check cell types
+    try {
+      this.isValidRowTypes(row)
+    } catch (err) {
+      throw new Error(err.message)
+    }
+
+    // Extract data
     try {
       obj = {
         province: provinceName,

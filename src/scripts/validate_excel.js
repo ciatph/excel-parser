@@ -63,13 +63,6 @@ const validateExcel = async (excelFile, ExcelDefinition, toCsv = false) => {
 
   const filteredData = temp.map((x, index) => {
     const province = ExcelDefinition.getProvince(x.__EMPTY)
-      
-    // Check cell types
-    try {
-      ExcelDefinition.isValidRowTypes(x)
-    } catch (err) {
-      throw new Error(`[${excelFile}], row #${index} ${err.message}`)
-    }
 
     try {
       const obj = ExcelDefinition.getData(x, province)
