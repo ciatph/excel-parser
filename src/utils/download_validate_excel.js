@@ -6,7 +6,8 @@ const { DOWNLOAD_DIR } = require('../utils/constants')
 
 const downloadValidateExcel = async (url, dest = 'sample.xlsx', regionName, toCsv = false) => {
   return new Promise ((resolve, reject) => {
-    const file = fs.createWriteStream(path.resolve(__dirname, '..', '..', DOWNLOAD_DIR, dest))
+    const filePath = path.resolve(__dirname, '..', '..', DOWNLOAD_DIR, dest)
+    const file = fs.createWriteStream(filePath)
 
     https.get(url, (res) => {
       res.pipe(file)
@@ -15,7 +16,7 @@ const downloadValidateExcel = async (url, dest = 'sample.xlsx', regionName, toCs
         file.close(async () => {
           try {
             let extracted = []
-            extracted = await validateExcel(path.resolve(__dirname, '..', '..', DOWNLOAD_DIR, dest), regionName, toCsv)
+            extracted = await validateExcel(filePath, regionName, toCsv)
 
             if (extracted.length > 0) {
               console.log(`[${dest}] download complete`)  
@@ -26,12 +27,11 @@ const downloadValidateExcel = async (url, dest = 'sample.xlsx', regionName, toCs
           } catch (err) {
             reject(new Error(err.message))
           }
-          /*
-          fs.unlink(dest, (err) => {
+
+          fs.unlink(filePath, (err) => {
             if (err) console.log(err)
             else console.log(`Deleted temp file ${dest}\n`)
           })
-          */
         })
       }).on('error', (err) => {
         fs.unlink(dest)
