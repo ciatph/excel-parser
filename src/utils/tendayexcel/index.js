@@ -2,7 +2,7 @@ const { PROVINCES } = require('./constants')
 
 class TenDayExcel {
   /**
-   * Set the CSV's target region, provinces and municipalities
+   * Set the target region, provinces and municipalities
    * @param {String} regionName - region name
    * @param {String[]} provinces - (Optional) provinces under the the specified region
    *    No need to include this parameter if the target region's provinces
@@ -19,25 +19,28 @@ class TenDayExcel {
       throw new Error('Must define province list.') 
     }    
 
+    // Region name
     this.region = regionName
 
+    // Provinces list
     this.provinces = (provinces !== undefined) 
       ? provinces
       : PROVINCES[regionName]
 
+    // Municipalities list (mixed across provinces)
     this.municipalities = municipalities
 
-  // Target column keys as defined in the converted JSON excel spreadsheet and their local names
-  this.columns = {
-    __EMPTY: 'location',
-    __EMPTY_1: 'tmin',
-    __EMPTY_2: 'tmax',
-    __EMPTY_3: 'tmean',
-    __EMPTY_5: 'rainfall',
-    __EMPTY_6: 'cover',
-    __EMPTY_7: 'humidity',
-    __EMPTY_8: 'wspeed',
-    // __EMPTY_9 or CLIMPS-FF-1 = wind direction
+    // Target column keys as defined in the converted "sheetjs" JSON excel spreadsheet and their local names
+    this.columns = {
+      __EMPTY: 'location',
+      __EMPTY_1: 'tmin',
+      __EMPTY_2: 'tmax',
+      __EMPTY_3: 'tmean',
+      __EMPTY_5: 'rainfall',
+      __EMPTY_6: 'cover',
+      __EMPTY_7: 'humidity',
+      __EMPTY_8: 'wspeed',
+      // __EMPTY_9 or CLIMPS-FF-1 = wind direction
     }    
   }
 
