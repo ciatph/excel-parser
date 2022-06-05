@@ -4,9 +4,12 @@ const path = require('path')
 const validateExcel = require('../scripts/validate_excel')
 const { DOWNLOAD_DIR } = require('../utils/constants')
 
-const downloadValidateExcel = async (url, dest = 'sample.xlsx', ExcelDefinition, toCsv = false) => {
+const downloadValidateExcel = async ({ url, storagePath, dest = 'sample.xlsx', ExcelDefinition, tocsv = false }) => {
   return new Promise ((resolve, reject) => {
-    const filePath = path.resolve(__dirname, '..', '..', DOWNLOAD_DIR, dest)
+    const filePath = (storagePath !== undefined)
+      ? path.resolve(storagePath, dest)
+      : path.resolve(__dirname, '..', '..', DOWNLOAD_DIR, dest)
+
     const file = fs.createWriteStream(filePath)
 
     https.get(url, (res) => {
@@ -16,7 +19,7 @@ const downloadValidateExcel = async (url, dest = 'sample.xlsx', ExcelDefinition,
         file.close(async () => {
           try {
             let extracted = []
-            extracted = await validateExcel(filePath, ExcelDefinition, toCsv)
+            extracted = await validateExcel(filePath, ExcelDefinition, tocsv)
 
             if (extracted.length > 0) {
               console.log(`[${dest}] download complete`)  
