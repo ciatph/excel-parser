@@ -43,13 +43,6 @@ const parseDayForecast = (excelFile, regionName) => {
   const filteredData = data.filter(x => (x.__EMPTY !== undefined && bicolCSV.getProvince(x.__EMPTY) !== undefined))
     .map((x, index) => {
       const province = bicolCSV.getProvince(x.__EMPTY)
-      
-      // Check cell types
-      try {
-        bicolCSV.isValidRowTypes(x)
-      } catch (err) {
-        throw new Error(`[${excelFile}], row #${index} ${err.message}`)
-      }
 
       try {
         const obj = bicolCSV.getData(x, province)
