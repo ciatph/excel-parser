@@ -5,7 +5,7 @@ const fs = require('fs')
 
 // Callback function to downloadExcel() - parse the downloaded excel file
 // Get the rainfall condition with highest count per province
-const validateExcel = async (excelFile, regionName) => {
+const validateExcel = async (excelFile, regionName, toCsv = false) => {
   const bicolCSV = new TenDayCsv({ regionName })
 
   // SheetJS (xlsx) objects
@@ -76,7 +76,10 @@ const validateExcel = async (excelFile, regionName) => {
 
     // console.log(filteredData)
     if (filteredData.length > 0) {
-      await writeCsv(filteredData, excelFile.replace('.xlsx', '.csv'))
+      if (toCsv) {
+        await writeCsv(filteredData, excelFile.replace('.xlsx', '.csv'))
+      }
+
       return filteredData
     } else {
       throw new Error(`[${excelFile}] No data are extracted.`)

@@ -11,7 +11,7 @@ const main = async () => {
   let response = []
 
   for (let i = 1; i <= max; i += 1) {
-    files.push(downloadValidateExcel(`${baseUrl}/day${i}.xlsx`, `day${i}.xlsx`, REGIONS.BICOL))
+    files.push(downloadValidateExcel(`${baseUrl}/day${i}.xlsx`, `day${i}.xlsx`, REGIONS.BICOL, true))
   }
 
   try {
