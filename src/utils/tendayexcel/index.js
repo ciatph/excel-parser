@@ -1,14 +1,16 @@
 const { PROVINCES } = require('./constants')
 
-class TenDayCsv {
+class TenDayExcel {
   /**
-   * Set the CSV's target region and provinces
+   * Set the CSV's target region, provinces and municipalities
    * @param {String} regionName - region name
    * @param {String[]} provinces - (Optional) provinces under the the specified region
    *    No need to include this parameter if the target region's provinces
-   *    is already defined in the PROVINCES constant 
+   *    is already defined in the PROVINCES constant
+   * @param {String[]} municipalities - (Optional) a list of mixed municipalities under provinces
+   *    Only the municipalities listed here will be processed and written to CSV
    */
-  constructor ({ regionName, provinces, municipalities }) {
+  constructor ({ regionName, provinces, municipalities = [] }) {
     if (regionName === undefined) {
       throw new Error('Missing parameter/s.')
     }
@@ -22,6 +24,8 @@ class TenDayCsv {
     this.provinces = (provinces !== undefined) 
       ? provinces
       : PROVINCES[regionName]
+
+    this.municipalities = municipalities
 
   // Target column keys as defined in the converted JSON excel spreadsheet and their local names
   this.columns = {
@@ -189,4 +193,4 @@ class TenDayCsv {
   }
 }
 
-module.exports = TenDayCsv
+module.exports = TenDayExcel

@@ -1,11 +1,11 @@
 const XLSX = require('xlsx')
-const TenDayCsv = require('../utils/tendaycsv')
+const TenDayExcel = require('../utils/TenDayExcel')
 const writeCsv = require('../utils/write_csv')
 
 // Callback function to downloadExcel() - parse the downloaded excel file
 // Get the rainfall condition with highest count per province
 const parseDayForecast = (excelFile, regionName) => {
-  const bicolCSV = new TenDayCsv({ regionName })
+  const bicolCSV = new TenDayExcel({ regionName })
 
   if (excelFile === undefined) {
     throw new Error('Missing parameter(s).')
