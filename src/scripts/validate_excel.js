@@ -1,12 +1,12 @@
 const XLSX = require('xlsx')
-const TenDayCsv = require('../utils/tendaycsv')
+const TenDayExcel = require('../utils/TenDayExcel')
 const writeCsv = require('../utils/write_csv')
 const fs = require('fs')
 
 // Callback function to downloadExcel() - parse the downloaded excel file
 // Get the rainfall condition with highest count per province
 const validateExcel = async (excelFile, regionName, toCsv = false) => {
-  const bicolCSV = new TenDayCsv({ regionName })
+  const bicolCSV = new TenDayExcel({ regionName })
 
   // SheetJS (xlsx) objects
   let workbook

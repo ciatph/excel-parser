@@ -1,6 +1,6 @@
 const downloadExcel = require('./utils/download_excel')
 const parseDayForecast = require('../src/scripts/parse_day')
-const { REGIONS } = require('./utils/tendaycsv/constants')
+const { REGIONS } = require('./utils/tendayexcel/constants')
 
 // Download all 10 Daily Weather Forecast excel files
 // Parse and extract relevant data to CSV files

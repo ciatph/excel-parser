@@ -1,5 +1,5 @@
 const downloadValidateExcel = require('./utils/download_validate_excel')
-const { REGIONS } = require('./utils/tendaycsv/constants')
+const { REGIONS } = require('./utils/tendayexcel/constants')
 
 // Download all 10 Daily Weather Forecast excel files
 // Parse and validate relevant data

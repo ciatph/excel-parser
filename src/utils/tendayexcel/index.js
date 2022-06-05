@@ -1,6 +1,6 @@
 const { PROVINCES } = require('./constants')
 
-class TenDayCsv {
+class TenDayExcel {
   /**
    * Set the CSV's target region and provinces
    * @param {String} regionName - region name
@@ -189,4 +189,4 @@ class TenDayCsv {
   }
 }
 
-module.exports = TenDayCsv
+module.exports = TenDayExcel

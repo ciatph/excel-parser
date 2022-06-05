@@ -1,5 +1,5 @@
 const parseDayForecast = require('./scripts/parse_day')
-const { REGIONS } = require('./utils/tendaycsv/constants')
+const { REGIONS } = require('./utils/tendayexcel/constants')
 
 // Parse and extract relevant data from local Excel files to CSV files
 const batchLocal = () => {
