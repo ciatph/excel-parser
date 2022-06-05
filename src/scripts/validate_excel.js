@@ -6,9 +6,9 @@ const writeCsv = require('../utils/write_csv')
  * Extract data defined in TenDayExcel into Object[] or CSV file
  * @param {String} excelFile - Excel file complete with full path
  * @param {TenDayExcel} ExcelDefinition - An instance of TenDayExcel initialized with a target region
- * @param {Bool} toCsv - Write processed/filtered data to a CSV file
+ * @param {Bool} tocsv - Write processed/filtered data to a CSV file
  */
-const validateExcel = async (excelFile, ExcelDefinition, toCsv = false) => {
+const validateExcel = async (excelFile, ExcelDefinition, tocsv = false) => {
   // SheetJS (xlsx) objects
   let workbook
   let sheets
@@ -76,7 +76,7 @@ const validateExcel = async (excelFile, ExcelDefinition, toCsv = false) => {
 
   // console.log(filteredData)
   if (filteredData.length > 0) {
-    if (toCsv) {
+    if (tocsv) {
       await writeCsv(filteredData, excelFile.replace('.xlsx', '.csv'))
     }
 
